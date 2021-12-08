@@ -7,6 +7,40 @@ p2p.py contains the class Peer and the main thread. The main thread is located a
 the program. Peer class contains all the functions that each peer requires, TCP server as well as 
 the UDP server.
 
+# How to run
+Version used: Python 3.7.3
+File includes p2p.py, init_python.sh, run.py and 2067.pdf (an example file with file number 2067)
+
+How to run the code:
+Running run.py will initialize 7 peers with id 2, 4, 5, 8, 9, 14 and 19. 
+Then after waiting several seconds, a peer with id 15 will perform a join request.
+
+Or run manually:
+
+1. Initializing new peer:  
+    In a new terminal: python3 p2p.py init <peer_id> <first_successor> <second_successor> 
+        <ping_interval>
+    e.g. python3 p2p.py init 2 4 5 30
+
+2. Joining a new peer: 
+    In a new terminal: python3 p2p.py join <peer_id> <known_peer> <ping_interval>
+    e.g. python3 p2p.py join 15 4 30
+
+3. Store command:
+    In an existing peer terminal: store <file_number>
+    e.g store 2067
+
+4. Request command:
+    In an existing peer terminal: request <file_number>
+    e.g request 2067
+
+5. Graceful quit command:
+    In an existing peer terminal:
+    Usage: quit
+    
+6. Abrupt quit command:
+    In an existing peer terminal: Ctrl + C
+
 ## TCP server(def TCPserver( ) and recvHandler( ) )
 Each peer has its own TCP server that is set up during its initial initialization. The TCP server will 
 be online and ready to receive any request until the peer quits. Each peer’s TCP port number 
